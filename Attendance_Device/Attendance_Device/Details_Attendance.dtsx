@@ -1,0 +1,2377 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/16/2025 1:21:28 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-V7TPAFQI"
+  DTS:CreatorName="LAPTOP-V7TPAFQI\Maryam Yehia"
+  DTS:DTSID="{4BC75DDE-C2EC-4F1D-B4C7-92B03426CF5B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Details_Attendance"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{22AA6CB9-6AB0-487B-A36A-F3D08F4496AA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Base"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{f73b8a26-9ce6-4de0-ac2b-b239dce1037f}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Base"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Base\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Base\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate.Inputs[Aggregate Input 1].Columns[employee_id]"
+                      cachedDataType="i2"
+                      cachedName="employee_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[employee_id]" />
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate.Inputs[Aggregate Input 1].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate.Inputs[Aggregate Input 1].Columns[Time_in]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_in"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_in]" />
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate.Inputs[Aggregate Input 1].Columns[Time_out]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_out"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_out]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[employee_id]"
+                      dataType="i2"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[employee_id]"
+                      name="employee_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[employee_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Date]"
+                      name="Date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]"
+                      name="Time_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_in]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">6</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_out]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_out]"
+                      name="Time_out">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_out]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">6</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Aggregate 1"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate 1"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Base\Aggregate 1.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate 1.Inputs[Aggregate Input 1].Columns[employee_id]"
+                      cachedDataType="i2"
+                      cachedName="employee_id"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_id]" />
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate 1.Inputs[Aggregate Input 1].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      lineageId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate 1.Inputs[Aggregate Input 1].Columns[in_out]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="in_out"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[in_out]" />
+                    <inputColumn
+                      refId="Package\Data Base\Aggregate 1.Inputs[Aggregate Input 1].Columns[Time_in]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_in"
+                      lineageId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Time_in]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[employee_id]"
+                      dataType="i2"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[employee_id]"
+                      name="employee_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Date]"
+                      name="Date">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[in_out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[in_out]"
+                      name="in_out">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[in_out]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Time_in]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Time_in]"
+                      name="Time_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Time_in]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">6</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[max_in]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[max_in]"
+                      name="max_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Time_in]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">7</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Base\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Conditional Split.Inputs[Conditional Split Input].Columns[in_out]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="in_out"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[in_out]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Conditional Split.Outputs[in]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="in"
+                  synchronousInputId="Package\Data Base\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[in_out]} == "in"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">in_out == "in"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Conditional Split.Outputs[out]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="out"
+                  synchronousInputId="Package\Data Base\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[in_out]} == "out"</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">in_out == "out"</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Base\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Base\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Conditional Split 1"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Base\Conditional Split 1.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Conditional Split 1.Inputs[Conditional Split Input].Columns[Time_out]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_out"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_out]" />
+                    <inputColumn
+                      refId="Package\Data Base\Conditional Split 1.Inputs[Conditional Split Input].Columns[max_in]"
+                      cachedDataType="dbTime"
+                      cachedName="max_in"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[max_in]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Conditional Split 1.Outputs[Case 1]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Data Base\Conditional Split 1.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_out]}) ==  TRUE  || [ISNULL](#{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[max_in]}) ==  TRUE  || #{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_out]} &gt;= #{Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[max_in]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(Time_out) ==  TRUE  || ISNULL(max_in) ==  TRUE  || Time_out &gt;= max_in</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Conditional Split 1.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Data Base\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Conditional Split 1.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Data Base\Conditional Split 1.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Conditional Split 1.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Data Conversion_IN"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion_IN"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Base\Data Conversion_IN.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Data Conversion_IN.Inputs[Data Conversion Input].Columns[finger_print_ts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="finger_print_ts"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Base\Data Conversion_IN.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Time_in]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output].Columns[Time_in]"
+                      name="Time_in"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Base\Data Conversion_IN.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Data Conversion_OUT"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion_OUT"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Base\Data Conversion_OUT.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Data Conversion_OUT.Inputs[Data Conversion Input].Columns[finger_print_ts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="finger_print_ts"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Base\Data Conversion_OUT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Time_out]"
+                      dataType="dbTime"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Time_out]"
+                      name="Time_out"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Base\Data Conversion_OUT.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">2</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Base\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[employee_id]"
+                      cachedDataType="i2"
+                      cachedName="employee_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[employee_id]" />
+                    <inputColumn
+                      refId="Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[Time_in]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_in"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[Time_in]" />
+                    <inputColumn
+                      refId="Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[max_in]"
+                      cachedDataType="dbTime"
+                      cachedName="max_in"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[max_in]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Data Base\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Merge Join.Inputs[Merge Join Left Input].Columns[employee_id]"
+                      cachedDataType="i2"
+                      cachedName="employee_id"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[employee_id]" />
+                    <inputColumn
+                      refId="Package\Data Base\Merge Join.Inputs[Merge Join Left Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Base\Merge Join.Inputs[Merge Join Left Input].Columns[Time_out]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_out"
+                      lineageId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[Time_out]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_in]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_in]"
+                      name="Time_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[Time_in]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_out]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Time_out]"
+                      name="Time_out">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Base\Merge Join.Inputs[Merge Join Left Input].Columns[Time_out]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[employee_id]"
+                      dataType="i2"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[employee_id]"
+                      name="employee_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[employee_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[Date]"
+                      name="Date"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[Date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[max_in]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Merge Join.Outputs[Merge Join Output].Columns[max_in]"
+                      name="max_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Data Base\Merge Join.Inputs[Merge Join Right Input].Columns[max_in]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Emp_Attendence_Details]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Base\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{795151A8-2E5A-497F-B329-AB8373D76FE8}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DST]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Time_in]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_in"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Time_In]"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]" />
+                    <inputColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Time_out]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_out"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Time_Out]"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_out]" />
+                    <inputColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Worked_Hours]"
+                      cachedDataType="i4"
+                      cachedName="Worked_Hours"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Worked_Hours]"
+                      lineageId="Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]" />
+                    <inputColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Data Base\State.Outputs[Derived Column Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[employee_id]"
+                      cachedDataType="i2"
+                      cachedName="employee_id"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Emp_ID]"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[employee_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Att_Key]"
+                      dataType="i4"
+                      name="Att_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Emp_ID]"
+                      dataType="i2"
+                      name="Emp_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Time_In]"
+                      dataType="wstr"
+                      length="16"
+                      name="Time_In" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Time_Out]"
+                      dataType="wstr"
+                      length="16"
+                      name="Time_Out" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Worked_Hours]"
+                      dataType="i2"
+                      name="Worked_Hours" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="12"
+                      name="State" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Attendance_Device]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Base\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{E327C7DF-1B41-4492-961F-D921EA16AD29}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[SRC]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_id]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_id]"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_id]"
+                      name="employee_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[finger_print_ts]"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]"
+                      name="finger_print_ts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[in_out]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[in_out]"
+                      length="3"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[in_out]"
+                      name="in_out"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                      dataType="i2"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_id]"
+                      dataType="i2"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[finger_print_ts]"
+                      dataType="dbTimeStamp"
+                      name="finger_print_ts" />
+                    <externalMetadataColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[in_out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      name="in_out" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      dataType="i2"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_id]"
+                      dataType="i2"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_id]"
+                      name="employee_id" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[finger_print_ts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[finger_print_ts]"
+                      name="finger_print_ts" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[in_out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[in_out]"
+                      name="in_out" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Base\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Sort.Inputs[Sort Input].Columns[employee_id]"
+                      cachedDataType="i2"
+                      cachedName="employee_id"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[employee_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Base\Sort.Inputs[Sort Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Base\Sort.Inputs[Sort Input].Columns[in_out]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="3"
+                      cachedName="in_out"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[in_out]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Base\Sort.Inputs[Sort Input].Columns[Time_in]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_in"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Time_in]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Base\Sort.Inputs[Sort Input].Columns[max_in]"
+                      cachedDataType="dbTime"
+                      cachedName="max_in"
+                      lineageId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[max_in]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Sort.Outputs[Sort Output].Columns[employee_id]"
+                      dataType="i2"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[employee_id]"
+                      name="employee_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[employee_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Sort.Outputs[Sort Output].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[Date]"
+                      name="Date"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Date]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Sort.Outputs[Sort Output].Columns[in_out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="3"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[in_out]"
+                      name="in_out">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[in_out]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Sort.Outputs[Sort Output].Columns[Time_in]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[Time_in]"
+                      name="Time_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[Time_in]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Sort.Outputs[Sort Output].Columns[max_in]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Sort.Outputs[Sort Output].Columns[max_in]"
+                      name="max_in">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1].Columns[max_in]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Sort_out"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort_out"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Data Base\Sort_out.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Sort_out.Inputs[Sort Input].Columns[employee_id]"
+                      cachedDataType="i2"
+                      cachedName="employee_id"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Base\Sort_out.Inputs[Sort Input].Columns[finger_print_ts]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="finger_print_ts"
+                      lineageId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Base\Sort_out.Inputs[Sort Input].Columns[Time_out]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_out"
+                      lineageId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Time_out]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Data Base\Sort_out.Inputs[Sort Input].Columns[Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Date"
+                      lineageId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Date]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Sort_out.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[employee_id]"
+                      dataType="i2"
+                      lineageId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[employee_id]"
+                      name="employee_id"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[finger_print_ts]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[finger_print_ts]"
+                      name="finger_print_ts">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output].Columns[finger_print_ts]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[Time_out]"
+                      dataType="dbTime"
+                      lineageId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[Time_out]"
+                      name="Time_out">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Time_out]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[Date]"
+                      dataType="dbDate"
+                      lineageId="Package\Data Base\Sort_out.Outputs[Sort Output].Columns[Date]"
+                      name="Date"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output].Columns[Date]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\State"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="State"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Base\State.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\State.Inputs[Derived Column Input].Columns[Time_out]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_out"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_out]" />
+                    <inputColumn
+                      refId="Package\Data Base\State.Inputs[Derived Column Input].Columns[Time_in]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_in"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]" />
+                    <inputColumn
+                      refId="Package\Data Base\State.Inputs[Derived Column Input].Columns[Worked_Hours]"
+                      cachedDataType="i4"
+                      cachedName="Worked_Hours"
+                      lineageId="Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\State.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Base\State.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\State.Outputs[Derived Column Output].Columns[State]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="12"
+                      lineageId="Package\Data Base\State.Outputs[Derived Column Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_out]}) ? "no check out" : ([DATEPART]("HOUR",#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]}) == 9 &amp;&amp; #{Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]} &gt; 8) ? "ebn el-shrka" : ([DATEPART]("HOUR",#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]}) == 9 &amp;&amp; #{Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]} == 8) ? "mo7tram" : ([DATEPART]("HOUR",#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]}) &gt; 9 &amp;&amp; #{Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]} == 8) ? "raye2" : ([DATEPART]("HOUR",#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]}) == 9 &amp;&amp; #{Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]} &lt; 8) ? "byst3bat" : ([DATEPART]("HOUR",#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]}) &gt; 9 &amp;&amp; #{Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]} &lt; 8) ? "msh mo7tram" : "no check out"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Time_out) ? "no check out" : (DATEPART("HOUR",Time_in) == 9 &amp;&amp; Worked_Hours &gt; 8) ? "ebn el-shrka" : (DATEPART("HOUR",Time_in) == 9 &amp;&amp; Worked_Hours == 8) ? "mo7tram" : (DATEPART("HOUR",Time_in) &gt; 9 &amp;&amp; Worked_Hours == 8) ? "raye2" : (DATEPART("HOUR",Time_in) == 9 &amp;&amp; Worked_Hours &lt; 8) ? "byst3bat" : (DATEPART("HOUR",Time_in) &gt; 9 &amp;&amp; Worked_Hours &lt; 8) ? "msh mo7tram" : "no check out"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\State.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Base\State.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\State.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\State.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\State.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\State.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Base\Worked Hours"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Worked Hours"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Base\Worked Hours.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Base\Worked Hours.Inputs[Derived Column Input].Columns[Time_in]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_in"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]" />
+                    <inputColumn
+                      refId="Package\Data Base\Worked Hours.Inputs[Derived Column Input].Columns[Time_out]"
+                      cachedDataType="dbTime"
+                      cachedName="Time_out"
+                      lineageId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_out]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Base\Worked Hours.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Base\Worked Hours.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Base\Worked Hours.Outputs[Derived Column Output].Columns[Worked_Hours]"
+                      name="Worked_Hours"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[DATEDIFF]("HOUR",#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_in]},#{Package\Data Base\Aggregate.Outputs[Aggregate Output 1].Columns[Time_out]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">DATEDIFF("HOUR",Time_in,Time_out)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Base\Worked Hours.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Base\Worked Hours.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Base\Worked Hours.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Worked Hours.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Base\Worked Hours.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Base\Worked Hours.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Base.Paths[Aggregate Output 1]"
+              endId="Package\Data Base\Sort.Inputs[Sort Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Base\Aggregate 1.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Base.Paths[Aggregate Output 11]"
+              endId="Package\Data Base\Worked Hours.Inputs[Derived Column Input]"
+              name="Aggregate Output 1"
+              startId="Package\Data Base\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Data Base.Paths[Case 1]"
+              endId="Package\Data Base\Aggregate.Inputs[Aggregate Input 1]"
+              name="Case 1"
+              startId="Package\Data Base\Conditional Split 1.Outputs[Case 1]" />
+            <path
+              refId="Package\Data Base.Paths[Data Conversion Output]"
+              endId="Package\Data Base\Sort_out.Inputs[Sort Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Base\Data Conversion_OUT.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Base.Paths[Data Conversion Output1]"
+              endId="Package\Data Base\Aggregate 1.Inputs[Aggregate Input 1]"
+              name="Data Conversion Output"
+              startId="Package\Data Base\Data Conversion_IN.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Base.Paths[Derived Column Output]"
+              endId="Package\Data Base\State.Inputs[Derived Column Input]"
+              name="Derived Column Output"
+              startId="Package\Data Base\Worked Hours.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Base.Paths[Derived Column Output1]"
+              endId="Package\Data Base\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Base\State.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Base.Paths[in]"
+              endId="Package\Data Base\Data Conversion_IN.Inputs[Data Conversion Input]"
+              name="in"
+              startId="Package\Data Base\Conditional Split.Outputs[in]" />
+            <path
+              refId="Package\Data Base.Paths[Merge Join Output]"
+              endId="Package\Data Base\Conditional Split 1.Inputs[Conditional Split Input]"
+              name="Merge Join Output"
+              startId="Package\Data Base\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Data Base.Paths[OLE DB Source Output]"
+              endId="Package\Data Base\Conditional Split.Inputs[Conditional Split Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Base\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Data Base.Paths[out]"
+              endId="Package\Data Base\Data Conversion_OUT.Inputs[Data Conversion Input]"
+              name="out"
+              startId="Package\Data Base\Conditional Split.Outputs[out]" />
+            <path
+              refId="Package\Data Base.Paths[Sort Output]"
+              endId="Package\Data Base\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Base\Sort_out.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Base.Paths[Sort Output1]"
+              endId="Package\Data Base\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Base\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="127.2,41.6"
+          Id="Package\Data Base"
+          TopLeft="309.999986340603,70.3999999276797" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Base">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="135.2,41.6"
+          Id="Package\Data Base\Aggregate 1"
+          TopLeft="369.194119022261,259.342856179447" />
+        <NodeLayout
+          Size="117.6,41.6"
+          Id="Package\Data Base\Sort_out"
+          TopLeft="96.2673986796682,296.794135229341" />
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Data Base\OLE DB Source"
+          TopLeft="217.192306045348,56.5333333574401" />
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Data Base\Data Conversion_IN"
+          TopLeft="354.761897796204,193.027104657099" />
+        <NodeLayout
+          Size="104.8,41.6"
+          Id="Package\Data Base\State"
+          TopLeft="220.366579715935,695.803664845314" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Data Base\Merge Join"
+          TopLeft="200.924906074246,397.294501248989" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Data Base\Conditional Split 1"
+          TopLeft="189.139183805085,464.590476292069" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Base\OLE DB Destination"
+          TopLeft="186.833330516186,798.599991217653" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Data Base\Data Conversion_OUT"
+          TopLeft="61.1904761254315,193.758238200608" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Data Base\Sort"
+          TopLeft="393.626352119578,332.342855671814" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Data Base\Worked Hours"
+          TopLeft="195.146800874103,618.985594219082" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Data Base\Aggregate"
+          TopLeft="206.529584134958,548.679366307265" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Data Base\Conditional Split"
+          TopLeft="219.939558382682,123.128935886945" />
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Sort Output1]"
+          TopLeft="442.426352119578,373.942855671814">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-156.434779378665,23.3516455771747"
+              Start="0,0"
+              End="-156.434779378665,15.8516455771747">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.84012164695966" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.84012164695966"
+                    Point2="0,13.8401216469597"
+                    Point3="-4,13.8401216469597" />
+                  <mssgle:LineSegment
+                    End="-152.434779378665,13.8401216469597" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-152.434779378665,13.8401216469597"
+                    Point2="-156.434779378665,13.8401216469597"
+                    Point3="-156.434779378665,17.8401216469597" />
+                  <mssgle:LineSegment
+                    End="-156.434779378665,15.8516455771747" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Sort Output]"
+          TopLeft="155.067398679668,338.394135229341">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.3908407279113,58.9003660196486"
+              Start="0,0"
+              End="90.3908407279113,51.4003660196486">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.9092413238405" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,30.9092413238405"
+                    Point2="0,34.9092413238405"
+                    Point3="4,34.9092413238405" />
+                  <mssgle:LineSegment
+                    End="86.3908407279113,34.9092413238405" />
+                  <mssgle:CubicBezierSegment
+                    Point1="86.3908407279113,34.9092413238405"
+                    Point2="90.3908407279113,34.9092413238405"
+                    Point3="90.3908407279113,38.9092413238405" />
+                  <mssgle:LineSegment
+                    End="90.3908407279113,51.4003660196486" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[out]"
+          TopLeft="272.472891716016,164.728935886945">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-119.682415590584,29.0293023136622"
+              Start="0,0"
+              End="-119.682415590584,21.5293023136622">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.79128362018855" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.79128362018855"
+                    Point2="0,11.7912836201885"
+                    Point3="-4,11.7912836201885" />
+                  <mssgle:LineSegment
+                    End="-115.682415590584,11.7912836201885" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-115.682415590584,11.7912836201885"
+                    Point2="-119.682415590584,11.7912836201885"
+                    Point3="-119.682415590584,15.7912836201885" />
+                  <mssgle:LineSegment
+                    End="-119.682415590584,21.5293023136622" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-67.872086701542,16.7912836201885,16.0617578125,9.1728515625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[OLE DB Source Output]"
+          TopLeft="294.965932214015,98.1333333574401">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.9956025295053"
+              Start="0,0"
+              End="0,17.4956025295053">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.4956025295053" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Merge Join Output]"
+          TopLeft="268.032044939665,438.894501248989">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.6959750430798"
+              Start="0,0"
+              End="0,18.1959750430798">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1959750430798" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[in]"
+          TopLeft="321.006225049349,164.728935886945">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="119.755672746855,28.298168770154"
+              Start="0,0"
+              End="119.755672746855,20.798168770154">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.49430772725843" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.49430772725843"
+                    Point2="0,11.4943077272584"
+                    Point3="4,11.4943077272584" />
+                  <mssgle:LineSegment
+                    End="115.755672746855,11.4943077272584" />
+                  <mssgle:CubicBezierSegment
+                    Point1="115.755672746855,11.4943077272584"
+                    Point2="119.755672746855,11.4943077272584"
+                    Point3="119.755672746855,15.4943077272584" />
+                  <mssgle:LineSegment
+                    End="119.755672746855,20.798168770154" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="55.5673090296775,16.4943077272584,8.6210546875,9.3193359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Derived Column Output]"
+          TopLeft="270.156690295019,660.585594219082">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.2180706262318"
+              Start="0,0"
+              End="0,27.7180706262318">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.7180706262318" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Data Conversion Output1]"
+          TopLeft="438.778008409233,234.627104657099">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.715751522348"
+              Start="0,0"
+              End="0,17.215751522348">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.215751522348" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Data Conversion Output]"
+          TopLeft="153.92893740255,235.358238200608">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.4358970287329"
+              Start="0,0"
+              End="0,53.9358970287329">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.9358970287329" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Case 1]"
+          TopLeft="270.034383970021,506.190476292069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.4888900151956"
+              Start="0,0"
+              End="0,34.9888900151956">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.9888900151956" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.2180859375,12.7175895388478,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Aggregate Output 11]"
+          TopLeft="268.63819250453,590.279366307265">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.706227911817"
+              Start="0,0"
+              End="0,21.206227911817">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.206227911817" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Aggregate Output 1]"
+          TopLeft="439.61023557092,300.942856179447">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.399999492367"
+              Start="0,0"
+              End="0,23.899999492367">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.899999492367" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Base.Paths[Derived Column Output1]"
+          TopLeft="272.599955116061,737.403664845314">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.1963263723394"
+              Start="0,0"
+              End="0,53.6963263723394">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,53.6963263723394" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Base\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Base\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

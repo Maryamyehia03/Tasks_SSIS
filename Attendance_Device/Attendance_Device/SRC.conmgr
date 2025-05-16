@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SRC"
+  DTS:DTSID="{E327C7DF-1B41-4492-961F-D921EA16AD29}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=LAPTOP-V7TPAFQI;Initial Catalog=attendence;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Attendance_Device-{E327C7DF-1B41-4492-961F-D921EA16AD29}LAPTOP-V7TPAFQI.attendence;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
